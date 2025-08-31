@@ -1,0 +1,3 @@
+id,name,category,points,difficulty,description,daily,files,hint
+forensics1,forensics1,forensics,100,easy,"http://10.123.74.133/ctf_questions/forensics1/cat_meta.jpg
+http://10.123.74.133/ctf_questions/forensics1/cat.jpg",false,"[""README.md"", ""cipher.txt"", ""hints.txt""]",will be updated soon :)

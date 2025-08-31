@@ -1,0 +1,2 @@
+Welcome challenger! Here’s your encrypted flag:
+synt{p34fne_p1cu3e_f1zcy3}
