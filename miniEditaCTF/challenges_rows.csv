@@ -1,0 +1,8 @@
+id,name,category,points,difficulty,description,daily,files,hint
+crypto1,crypto1,cryptography,100,easy,Welcome challenger! Here’s your encrypted flag: synt{p34fne_p1cu3e_f1zcy3},false,"[""README.md"", ""cipher.txt"", ""hints.txt""]",try using online tools ig?
+crypto2,crypto2,cryptography,150,medium,http://10.123.74.133/ctf_questions/crypto2/script.py,false,"[""README.md"", ""cipher.txt""]",will be updated soon :)
+forensics1,forensics1,forensics,100,easy,"http://10.123.74.133/ctf_questions/forensics1/cat_meta.jpg
+http://10.123.74.133/ctf_questions/forensics1/cat.jpg",false,"[""README.md"", ""cipher.txt"", ""hints.txt""]",will be updated soon :)
+forensics2,forensics2,forensics,200,medium,http://10.123.74.133/ctf_questions/forensics2/flag.jpg,false,"[""README.md"", ""cipher.txt"", ""hints.txt""]",will be updated soon :)
+rev1,rev1,reverse_engineering,100,easy,http://10.123.74.133/ctf_questions/rev1/script.c,false,"[""README.md"", ""cipher.txt"", ""hints.txt""]",will be updated soon :)
+rev2,rev2,reverse_engineering,200,medium,http://10.123.74.133/ctf_questions/rev2/script.c,false,"[""README.md"", ""cipher.txt"", ""hints.txt""]",will be updated soon :)
