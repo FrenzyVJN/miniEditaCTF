@@ -802,7 +802,7 @@ export default function Page() {
         if (!a || !b) return "register: usage: register <email> <password>"
         const { error } = await supabase.auth.signUp({ email: a, password: b })
         if (error) return `register: ${error.message}`
-        return "Registration successful. Please verify your email if required, then 'login'."
+        return "Registration successful. use 'auth login <email> <password>' to log in."
       }
       if (action === "login") {
         if (!a || !b) return "login: usage: login <email> <password>"

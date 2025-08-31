@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # CTF Database Migration Script
-# Runs all SQL scripts except 005_seed.sql against local Supabase
-# Usage: ./run_migrations.sh [database_url]
+# Runs all SQL scripts except 005_seed.sql against Supabase PostgreSQL database
+# Usage: ./run_migrations.sh
 
 set -e  # Exit on any error
 
@@ -13,14 +13,14 @@ YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-# Default Supabase local database URL
-DEFAULT_DB_URL="postgresql://postgres:postgres@localhost:54322/postgres"
+# Default PostgreSQL database URL - connecting directly to database container
+DEFAULT_DB_URL="docker exec supabase-db psql -U postgres -d postgres"
 
-# Use provided URL or default
+# Use provided URL or default (keeping for compatibility but not used in docker mode)
 DB_URL="${1:-$DEFAULT_DB_URL}"
 
 echo -e "${BLUE}🚀 Starting CTF Database Migration${NC}"
-echo -e "${BLUE}Database URL: ${DB_URL}${NC}"
+echo -e "${BLUE}Connecting to: Supabase PostgreSQL (docker container)${NC}"
 echo ""
 
 # Check if psql is available
@@ -32,10 +32,10 @@ fi
 
 # Test database connection
 echo -e "${YELLOW}🔌 Testing database connection...${NC}"
-if ! psql "$DB_URL" -c "SELECT 1;" &> /dev/null; then
+if ! docker exec supabase-db psql -U postgres -d postgres -c "SELECT 1;" &> /dev/null; then
     echo -e "${RED}❌ Error: Cannot connect to database${NC}"
-    echo "Please ensure your local Supabase is running and the connection URL is correct"
-    echo "Try: supabase start"
+    echo "Please ensure your Supabase Docker containers are running"
+    echo "Check your database server status with: docker ps | grep supabase-db"
     exit 1
 fi
 echo -e "${GREEN}✅ Database connection successful${NC}"
@@ -99,7 +99,7 @@ for file in "${SQL_FILES[@]}"; do
     
     echo -e "${YELLOW}📄 Running: $file${NC}"
     
-    if psql "$DB_URL" -f "$file_path" -v ON_ERROR_STOP=1 &> /tmp/migration_output.log; then
+    if docker exec -i supabase-db psql -U postgres -d postgres -v ON_ERROR_STOP=1 < "$file_path" &> /tmp/migration_output.log; then
         echo -e "${GREEN}✅ Success: $file${NC}"
         SUCCESSFUL+=("$file")
     else

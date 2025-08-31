@@ -1,0 +1,7 @@
+challenge_id,flag
+crypto1,editaCTF{caesar_cipher_easy}
+crypto2,editaCTF{python_crypto_medium}
+forensics1,editaCTF{metadata_extraction}
+forensics2,editaCTF{steganography_hidden}
+rev1,editaCTF{reverse_engineering_basic}
+rev2,editaCTF{binary_analysis_advanced}
