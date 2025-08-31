@@ -126,7 +126,7 @@ export default function Page() {
 
   const [history, setHistory] = useState<TerminalLine[]>([{ type: "system", text: WELCOME }])
   const [input, setInput] = useState("")
-  const [cwd, setCwd] = useState<string[]>([])
+  const [cwd, setCwd] = useLocalStorage<string[]>("edita-ctf:cwd", [])
   const [fsRoot, setFsRoot] = useState<FsNode | null>(null)
   const [challenges, setChallenges] = useState<ChallengeMeta[]>([])
   const termEndRef = useRef<HTMLDivElement>(null)
@@ -190,6 +190,20 @@ export default function Page() {
   useEffect(() => {
     reloadData()
   }, [reloadData])
+
+  // Validate stored path when filesystem loads
+  useEffect(() => {
+    if (!fsRoot || cwd.length === 0) return
+    
+    // Check if the stored path is still valid
+    const currentPath = joinPath(cwd)
+    const node = findNode(fsRoot, currentPath)
+    
+    // If the path is invalid or not a directory, reset to root
+    if (!node || node.type !== "dir") {
+      setCwd([])
+    }
+  }, [fsRoot, cwd, setCwd])
 
   useEffect(() => {
     if (!supabase) return
