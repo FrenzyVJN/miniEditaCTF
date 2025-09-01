@@ -1,7 +1,10 @@
 challenge_id,flag
-crypto1,editaCTF{caesar_cipher_easy}
-crypto2,editaCTF{python_crypto_medium}
-forensics1,editaCTF{metadata_extraction}
-forensics2,editaCTF{steganography_hidden}
-rev1,editaCTF{reverse_engineering_basic}
-rev2,editaCTF{binary_analysis_advanced}
+crypto1,editaCTF{c34sar_c1ph3r_s1mpl3}
+crypto2,editaCTF{x0r_1s_r3v3rs1bl3}
+forensics1,editaCTF{m3t4data_1s_sn34ky}
+forensics2,editaCTF{m4g1c_byt3s_4r3_cool}
+rev1,editaCTF{s1mpl3_d3comp1l1ng}
+rev2,editaCTF{p3gressing_simple}
+misc1,editaCTF{hi1dd3n_1n_pla1n_s1ght}
+web1,editaCTF{r0b0t5_sh0uldnt_gu4rd_s3cr3ts}
+web2,editaCTF{cookies_can_be_tasty}

@@ -268,11 +268,15 @@ export default function Page() {
   // Helper to determine if user is on a real team (not guest)
   const isOnRealTeam = currentTeam !== "guest" && !currentTeam.startsWith("guest_")
 
-  const prompt = useMemo(() => {
-    const path = joinPath(cwd)
-    const user = displayIdentity
-    return `${user}@${DEFAULT_HOST}:${path}$`
-  }, [cwd, displayIdentity])
+const [hydrated, setHydrated] = useState(false)
+useEffect(() => setHydrated(true), [])
+
+const prompt = useMemo(() => {
+  if (!hydrated) return "" // or some static SSR-safe placeholder
+  const path = joinPath(cwd)
+  const user = displayIdentity
+  return `${user}@${DEFAULT_HOST}:${path}$`
+}, [cwd, displayIdentity, hydrated])
 
   useEffect(() => {
     termEndRef.current?.scrollIntoView({ behavior: "smooth" })
