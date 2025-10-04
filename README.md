@@ -21,5 +21,3 @@ The site was built specifically for miniEditaCTF and is not intended for public 
 An open-source version of this platform — with improved documentation, flexibility, and theming support — will be published in a **separate repository** soon.
 
 ---
-
-flag{f@ke_fl@g}
